@@ -1,0 +1,28 @@
+spring.cloud.stream:
+    kafka.binder:
+        brokers: localhost:9092
+#        configuration.auto.offset.reset: earliest
+        headers: x-retries
+    bindings:
+        binding1:
+            destination: so8400out
+        error:
+            destination: error.so8400out.so8400
+        input:
+            group: so8400replay
+            destination: error.so8400out.so8400
+        output:
+            destination: so8400out
+        parkingLot:
+            destination: so8400in.parkingLot
+#    bindings:
+#        factorial-seed:
+#            destination: factorial.seed
+#            contentType: application/json
+#            group: cgroup1
+#            partitioned: true
+#        factorial-result:
+#            destination: factorial.result
+#            contentType: application/json
+#            group: cgroup1
+#            partitioned: true
